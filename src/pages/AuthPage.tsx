@@ -16,10 +16,7 @@ const AuthPage = {
                     <Input name="pw" type="password" placeholder="비밀번호를 입력해주세요"></Input>
 
                     <div className={styles.links}>
-                        <span>
-                            <Input name="save" type="checkbox"></Input>
-                            <Label htmlFor="save">로그인 유지하기</Label>
-                        </span>
+                        <span></span>
 
                         <span>
                             <Link>아이디 찾기</Link>
@@ -36,22 +33,6 @@ const AuthPage = {
                         <Link to="/auth/signup">회원가입</Link>
                     </span>
                 </p>
-
-                <div className={styles.sep}>
-                    <div className={styles.separator}>
-                        <span></span>
-                    </div>
-                    <div>또는</div>
-                    <div className={styles.separator}>
-                        <span></span>
-                    </div>
-                </div>
-
-                <div className={styles.social_login_container}>
-                    <SocialLoginButton type="google" />
-                    <SocialLoginButton type="naver" />
-                    <SocialLoginButton type="kakao" />
-                </div>
             </main>
         );
     },
@@ -67,9 +48,8 @@ const AuthPage = {
                     <InputContainer label="비밀번호 확인" type="password" placeholder="비밀번호를 한번 더 입력해주세요" onClick={() => {}} />
                     <InputContainer label="이름" type="text" placeholder="이름을 입력해주세요" onClick={() => {}} />
                     <InputContainer label="이메일" type="email" placeholder="이메일 주소를 입력해주세요" btnRequired btnLabel="중복확인" onClick={() => {}} />
-                    <InputContainer label="휴대폰" type="tel" placeholder="숫자만 입력해주세요" btnRequired btnLabel="인증번호 받기" onClick={() => {}} />
-                    <InputContainer label="주소 검색" type="button" placeholder="주소 검색" />
-                    <Input type="text" placeholder="상세주소를 입력해주세요"></Input>
+                    <InputContainer label="휴대폰" type="tel" placeholder="숫자만 입력해주세요" />
+                    <InputContainer label="주소" type="text" placeholder="주소를 입력해주세요" />
 
                     <div className={styles.input_gender_wrapper}>
                         <p>성별</p>
@@ -92,22 +72,6 @@ const AuthPage = {
                     </div>
 
                     <Input type="submit" value="가입하기" />
-
-                    <div className={styles.sep}>
-                        <div className={styles.separator}>
-                            <span></span>
-                        </div>
-                        <div>또는</div>
-                        <div className={styles.separator}>
-                            <span></span>
-                        </div>
-                    </div>
-
-                    <div className={styles.social_login_container}>
-                        <SocialLoginButton type="google" />
-                        <SocialLoginButton type="naver" />
-                        <SocialLoginButton type="kakao" />
-                    </div>
                 </div>
             </main>
         );

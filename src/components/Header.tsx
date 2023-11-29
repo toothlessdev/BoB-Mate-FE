@@ -20,10 +20,6 @@ export const Nav = (): JSX.Element => {
                     <span>밥메이트</span>
                 </div>
 
-                {/* <div className={styles.search}>
-                <Search></Search>
-            </div> */}
-
                 <div className={styles.auth}>
                     <Button type="primary-fill" width="90px" height="45px" onClick={() => navigate("/auth/signin")}>
                         로그인
