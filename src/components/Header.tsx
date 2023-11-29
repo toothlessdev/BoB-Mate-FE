@@ -4,10 +4,8 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUtensils } from "@fortawesome/free-solid-svg-icons";
 
-import { Search } from "./interface/Form";
 import { Button } from "./interface/Button";
 import styles from "./Header.module.scss";
-import logo from "@/assets/logo.svg";
 
 export const Nav = (): JSX.Element => {
     const navigate = useNavigate();

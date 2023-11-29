@@ -76,6 +76,12 @@ const AuthPage = {
             </main>
         );
     },
+    FindID: (): JSX.Element => {
+        return <></>;
+    },
+    FindPW: (): JSX.Element => {
+        return <></>;
+    },
 };
 
 export default AuthPage;
