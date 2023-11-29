@@ -103,16 +103,16 @@
             color: #767676;
         }
         span:last-child {
-            color: #05ca7e;
+            color: $color-primary;
             a {
                 margin: 0px 10px;
                 font-weight: bold;
                 text-decoration: none;
-                color: #05ca7e;
+                color: $color-primary;
             }
             a:visited {
                 text-decoration: none;
-                color: #05ca7e;
+                color: $color-primary;
             }
         }
     }

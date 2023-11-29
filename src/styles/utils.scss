@@ -1,4 +1,4 @@
-$color-primary: #05ca7e;
+$color-primary: #1887fd;
 
 $breakpoint-mobile: 767px;
 $breakpoint-tablet: 1023px;
@@ -6,6 +6,11 @@ $breakpoint-tablet: 1023px;
 $header-z-index: 999;
 $category-z-index: 998;
 $card-z-index: -1;
+
+@mixin container-width {
+    width: 80%;
+    max-width: 1200px;
+}
 
 @mixin wrapper {
     width: 90%;
