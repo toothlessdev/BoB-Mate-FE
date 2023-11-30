@@ -1,4 +1,4 @@
-import { IForm, IInput, IInputContainer, ILabel } from "./types";
+import { IForm, IInput, IInputContainer, IInputDate, ILabel } from "./types";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -35,6 +35,54 @@ export const InputContainer = ({ label, type, placeholder, btnRequired, btnLabel
             <p>{label}</p>
             <Input type={type} placeholder={placeholder} value={type === "button" ? placeholder : null} />
             {btnRequired && <Button type="primary-stroke">{btnLabel}</Button>}
+        </div>
+    );
+};
+
+export const InputDate = ({ label, getDate, setDate }: IInputDate): JSX.Element => {
+    return (
+        <div className={styles.input_date}>
+            <div className={styles.input_date_label}>
+                <p>{label}</p>
+            </div>
+
+            <div className={styles.input_date_container}>
+                <Input
+                    type="number"
+                    placeholder="년"
+                    onChange={(e) => {
+                        setDate({ ...getDate, year: Number(e.target.value) });
+                    }}
+                />
+                <Input
+                    type="number"
+                    placeholder="월"
+                    onChange={(e) => {
+                        setDate({ ...getDate, month: Number(e.target.value) });
+                    }}
+                />
+                <Input
+                    type="number"
+                    placeholder="일"
+                    onChange={(e) => {
+                        setDate({ ...getDate, date: Number(e.target.value) });
+                    }}
+                />
+                <Input
+                    type="number"
+                    placeholder="시"
+                    onChange={(e) => {
+                        setDate({ ...getDate, hour: Number(e.target.value) });
+                    }}
+                />
+                <Input
+                    type="number"
+                    placeholder="분"
+                    onChange={(e) => {
+                        setDate({ ...getDate, minute: Number(e.target.value) });
+                    }}
+                />
+            </div>
         </div>
     );
 };
