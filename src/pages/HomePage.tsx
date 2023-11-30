@@ -1,57 +1,45 @@
 import { Card } from "../components/Card";
+import { ICard } from "../components/types";
 import styles from "./HomePage.module.scss";
 
 export default function HomePage() {
     return (
         <main className={styles.main}>
             <Card.Container>
-                {data.map((value, index) => {
-                    return <Card.Item key={index} imgSrc={value.imgSrc} title={value.title} category={value.category} subcategory={value.subcategory} region={value.region} quantity={value.quantity} time={value.time} progress={value.progress} />;
+                {data.map((element) => {
+                    return <Card.Item title={element.title} type={element.type} date={element.date} restaurant={element.restaurant} location={element.location} user={element.user} remains={element.remains}></Card.Item>;
                 })}
             </Card.Container>
         </main>
     );
 }
 
-const data = [
+const data: ICard[] = [
     {
-        imgSrc: "https://i.namu.wiki/i/fhsBMFdIgnB_D4KHQpaG0n2yk5X26rVpfsYeoIaJxwb3gLbQDJ9C7rgVQEZWKfhUwE0bR_2yT0Y1FCOwkDePJg.webp",
-        title: "라면 5개입 묶음 4개 있어요",
-        category: "라면",
-        subcategory: "즉석식품",
-        region: "복현동",
-        quantity: 1,
-        time: 1,
-        progress: 0.5,
+        title: "점심 같이 먹을 사람 구해요",
+        type: "점심약속",
+        date: "2023년 11월 29일 (수) 12:00 ~ 13:00",
+        restaurant: "한식 / 정문국밥",
+        location: "경북대학교 정문",
+        user: "BobMate",
+        remains: 2,
     },
     {
-        imgSrc: "https://i.namu.wiki/i/fhsBMFdIgnB_D4KHQpaG0n2yk5X26rVpfsYeoIaJxwb3gLbQDJ9C7rgVQEZWKfhUwE0bR_2yT0Y1FCOwkDePJg.webp",
-        title: "라면 5개입 묶음 4개 있어요",
-        category: "라면",
-        subcategory: "즉석식품",
-        region: "복현동",
-        quantity: 1,
-        time: 1,
-        progress: 0.5,
+        title: "점심 같이 먹을 사람 구해요",
+        type: "점심약속",
+        date: "2023년 11월 29일 (수) 12:00 ~ 13:00",
+        restaurant: "한식 / 정문국밥",
+        location: "경북대학교 정문",
+        user: "BobMate",
+        remains: 2,
     },
     {
-        imgSrc: "https://i.namu.wiki/i/fhsBMFdIgnB_D4KHQpaG0n2yk5X26rVpfsYeoIaJxwb3gLbQDJ9C7rgVQEZWKfhUwE0bR_2yT0Y1FCOwkDePJg.webp",
-        title: "라면 5개입 묶음 4개 있어요",
-        category: "라면",
-        subcategory: "즉석식품",
-        region: "복현동",
-        quantity: 1,
-        time: 1,
-        progress: 0.5,
-    },
-    {
-        imgSrc: "https://i.namu.wiki/i/fhsBMFdIgnB_D4KHQpaG0n2yk5X26rVpfsYeoIaJxwb3gLbQDJ9C7rgVQEZWKfhUwE0bR_2yT0Y1FCOwkDePJg.webp",
-        title: "라면 5개입 묶음 4개 있어요",
-        category: "라면",
-        subcategory: "즉석식품",
-        region: "복현동",
-        quantity: 1,
-        time: 1,
-        progress: 0.5,
+        title: "점심 같이 먹을 사람 구해요",
+        type: "점심약속",
+        date: "2023년 11월 29일 (수) 12:00 ~ 13:00",
+        restaurant: "한식 / 정문국밥",
+        location: "경북대학교 정문",
+        user: "BobMate",
+        remains: 2,
     },
 ];
