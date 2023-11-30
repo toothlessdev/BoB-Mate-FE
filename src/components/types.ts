@@ -27,3 +27,13 @@ export interface ICategoryItem {
 export interface IProfile {
     imgSrc: string;
 }
+
+export interface ISearchResultContainer {
+    children: React.ReactNode;
+}
+
+export interface ISearchResult {
+    name: string;
+    location: string;
+    onClick: React.MouseEventHandler;
+}

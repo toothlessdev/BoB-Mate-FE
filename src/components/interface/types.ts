@@ -52,3 +52,10 @@ export interface ILabel {
     children?: React.ReactNode;
     [key: string]: any;
 }
+
+export interface IModal {
+    title: string;
+    children: React.ReactNode;
+    getModalState: boolean;
+    setModalState: React.Dispatch<React.SetStateAction<boolean>>;
+}
