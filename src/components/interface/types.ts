@@ -34,7 +34,28 @@ export interface IInputContainer {
     [key: string]: any;
 }
 
+export interface IInputDate {
+    label: string;
+    getDate: IDate;
+    setDate: React.Dispatch<React.SetStateAction<IDate>>;
+}
+
+export interface IDate {
+    year: number;
+    month: number;
+    date: number;
+    hour: number;
+    minute: number;
+}
+
 export interface ILabel {
     children?: React.ReactNode;
     [key: string]: any;
+}
+
+export interface IModal {
+    title: string;
+    children: React.ReactNode;
+    getModalState: boolean;
+    setModalState: React.Dispatch<React.SetStateAction<boolean>>;
 }
