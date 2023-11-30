@@ -29,8 +29,8 @@ export default function App() {
                     <Route path="/restaurant/list" element={<RestaurantListPage />} />
                     <Route path="/restaurant/:id" element={<RestaurantPage />} />
 
-                    <Route path="/reservation/create" element={<ReservationPage.Create />} />
-                    <Route path="/reservation/find" element={<ReservationPage.Find />} />
+                    <Route path="/reservation/create" element={<ReservationPage />} />
+                    <Route path="/reservation/find" element={<HomePage />} />
                 </Route>
             </Routes>
         </Provider>

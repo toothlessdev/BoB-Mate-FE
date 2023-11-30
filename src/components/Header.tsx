@@ -45,7 +45,7 @@ export const NavMenu = (): JSX.Element => {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/new" style={getActiveStyle}>
+                    <NavLink to="/reservation/create" style={getActiveStyle}>
                         밥약잡기
                     </NavLink>
                 </li>
