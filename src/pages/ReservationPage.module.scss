@@ -1,1 +1,65 @@
 @import "@/styles/utils.scss";
+
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.horizontal_separator {
+    width: 100%;
+    height: 3px;
+
+    margin: 10px 0px;
+
+    background-color: black;
+}
+
+.sep {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    max-width: 660px;
+
+    margin: 20px auto;
+    color: #767676;
+    .separator {
+        display: flex;
+        align-items: center;
+        width: 45%;
+        height: inherit;
+        margin: 0px auto;
+        span {
+            display: block;
+            width: 100%;
+            height: 1px;
+            border-bottom: 1px solid #bdbdbd;
+        }
+    }
+}
+
+.title {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.form {
+    display: block;
+    @include wrapper;
+
+    input:not(input[type="checkbox"]) {
+        box-sizing: border-box;
+        display: block;
+        width: 100%;
+        margin: 15px 0px;
+    }
+    input[type="submit"] {
+        height: 50px;
+
+        margin: 20px 0px;
+        font-size: 1rem;
+    }
+}
