@@ -1,5 +1,5 @@
-import { Card } from "../components/Card";
-import { ICard } from "../components/types";
+import { Card } from "../components/cards/Card";
+import { ICard } from "../components/cards/types";
 import styles from "./HomePage.module.scss";
 
 export default function HomePage() {

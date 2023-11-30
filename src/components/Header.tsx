@@ -50,7 +50,7 @@ export const NavMenu = (): JSX.Element => {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/deadline" style={getActiveStyle}>
+                    <NavLink to="/restaurant/list" style={getActiveStyle}>
                         음식점
                     </NavLink>
                 </li>
