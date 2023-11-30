@@ -7,6 +7,8 @@ $header-z-index: 999;
 $category-z-index: 998;
 $card-z-index: -1;
 
+$card-border: 15px;
+
 @mixin container-shadow {
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
 }
