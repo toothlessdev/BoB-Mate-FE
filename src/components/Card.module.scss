@@ -16,6 +16,10 @@
     margin: 30px 0px;
     border-radius: 15px;
     @include container-shadow;
+
+    & {
+        cursor: pointer;
+    }
 }
 
 .img_container {
