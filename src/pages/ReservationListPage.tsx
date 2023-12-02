@@ -3,7 +3,7 @@ import { Label, Input, InputContainer, InputDate } from "../components/interface
 import { Button } from "../components/interface/Button";
 import { IDate } from "../components/interface/types";
 
-import styles from "./ReservationPage.module.scss";
+import styles from "./ReservationListPage.module.scss";
 import { Modal } from "../components/interface/Modal";
 import { SearchResult } from "../components/SearchResult";
 
