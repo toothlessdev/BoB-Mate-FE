@@ -8,6 +8,16 @@ export interface ICard {
     remains: number;
 }
 
+export interface IRestaurantCard {
+    id: number,
+    title: string,
+    address: string,
+    menu: {
+        menuTitle: string,
+        price: number
+    }[]
+}
+
 export interface ICardContainer {
     children: React.ReactNode;
 }
