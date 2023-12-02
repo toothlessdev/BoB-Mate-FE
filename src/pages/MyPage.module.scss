@@ -1,1 +1,41 @@
 @import "@/styles/utils.scss";
+
+.wrapper {
+    @include wrapper;
+    margin: 0px auto;
+}
+
+.tab_wrapper {
+    width: 100%;
+
+    margin: 30px 0px;
+    border-bottom: 1px solid #52a4fc;
+}
+
+.tab_container {
+    @include wrapper;
+    margin: 0px auto;
+}
+
+.tab_head {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 50px;
+
+    div {
+        @include place-center;
+        width: 100px;
+        height: 100%;
+
+        font-weight: bold;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.tab_body {
+    @include wrapper;
+    margin: 0px auto;
+}
