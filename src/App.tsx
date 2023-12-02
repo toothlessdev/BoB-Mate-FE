@@ -10,7 +10,7 @@ import AuthPage from "./pages/AuthPage";
 import MyPage from "./pages/MyPage";
 import RestaurantListPage from "./pages/RestaurantListPage";
 import RestaurantPage from "./pages/RestaurantPage";
-import ReservationPage from "./pages/ReservationPage";
+import ReservationPage from "./pages/ReservationListPage";
 
 export default function App() {
     return (
