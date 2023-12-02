@@ -33,7 +33,7 @@ export const InputContainer = ({ label, type, placeholder, btnRequired, btnLabel
     return (
         <div className={styles.input_container}>
             <p>{label}</p>
-            <Input type={type} placeholder={placeholder} value={type === "button" ? placeholder : null} />
+            <Input type={type} placeholder={placeholder} value={type === "button" ? placeholder : null} {...rest} />
             {btnRequired && (
                 <Button type="primary-stroke" onClick={onClick}>
                     {btnLabel}
