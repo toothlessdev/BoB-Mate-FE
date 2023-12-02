@@ -34,22 +34,16 @@ const AuthPage = {
                     <Label className={styles.title}>회원가입</Label>
                     <div className={styles.horizontal_separator} />
 
-                    <InputContainer label="아이디" type="text" placeholder="아이디를 입력해주세요" btnRequired btnLabel="중복확인" onClick={() => {}} />
-                    <InputContainer label="비밀번호" type="password" placeholder="비밀번호를 입력해주세요" onClick={() => {}} />
-                    <InputContainer label="비밀번호 확인" type="password" placeholder="비밀번호를 한번 더 입력해주세요" onClick={() => {}} />
-                    <InputContainer label="닉네임" type="text" placeholder="이름을 입력해주세요" onClick={() => {}} />
-                    <InputContainer label="이메일" type="email" placeholder="이메일 주소를 입력해주세요" btnRequired btnLabel="중복확인" onClick={() => {}} />
+                    <InputContainer label="아이디" type="text" placeholder="아이디를 입력해주세요" />
+                    <InputContainer label="비밀번호" type="password" placeholder="비밀번호를 입력해주세요" />
+                    <InputContainer label="비밀번호 확인" type="password" placeholder="비밀번호를 한번 더 입력해주세요" />
+                    <InputContainer label="닉네임" type="text" placeholder="이름을 입력해주세요" />
+                    <InputContainer label="이메일" type="email" placeholder="이메일 주소를 입력해주세요" />
 
                     <Input type="submit" value="가입하기" />
                 </div>
             </main>
         );
-    },
-    FindID: (): JSX.Element => {
-        return <></>;
-    },
-    FindPW: (): JSX.Element => {
-        return <></>;
     },
 };
 
