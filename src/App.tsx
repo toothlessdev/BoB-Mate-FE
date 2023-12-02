@@ -10,7 +10,8 @@ import AuthPage from "./pages/AuthPage";
 import MyPage from "./pages/MyPage";
 import RestaurantListPage from "./pages/RestaurantListPage";
 import RestaurantPage from "./pages/RestaurantPage";
-import ReservationPage from "./pages/ReservationListPage";
+import ReservationListPage from "./pages/ReservationListPage";
+import ReservationPage from "./pages/ReservationPage";
 
 export default function App() {
     return (
@@ -29,8 +30,9 @@ export default function App() {
                     <Route path="/restaurant/list" element={<RestaurantListPage />} />
                     <Route path="/restaurant/:id" element={<RestaurantPage />} />
 
-                    <Route path="/reservation/create" element={<ReservationPage />} />
+                    <Route path="/reservation/create" element={<ReservationListPage />} />
                     <Route path="/reservation/find" element={<HomePage />} />
+                    <Route path="/reservation/:id" element={<ReservationPage />} />
                 </Route>
             </Routes>
         </Provider>
