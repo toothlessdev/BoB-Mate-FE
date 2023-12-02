@@ -1,5 +1,54 @@
 @import "@/styles/utils.scss";
 
+// user profile
+.user_profile_wrapper {
+    width: 150px;
+    height: 40px;
+    position: relative;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    .user_profile_container {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        img {
+            height: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        h4 {
+            display: flex;
+            margin: 0px 10px;
+        }
+        svg {
+            display: flex;
+            align-items: center;
+        }
+    }
+    .user_profile_dropdown {
+        position: absolute;
+        top: 50px;
+
+        width: 100%;
+
+        div {
+            width: 100%;
+            height: 50px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 0px 10px;
+
+            background-color: #ededed;
+        }
+    }
+}
+
 .user_card_wrapper {
     width: 400px;
     height: 120px;

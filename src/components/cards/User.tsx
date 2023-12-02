@@ -1,8 +1,34 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { ReviewStar } from "../Review";
-import { IUserCard, IUserReviewCard } from "./types";
+import { IUserCard, IUserProfile, IUserReviewCard } from "./types";
 
 import profileImg from "@/assets/profile.webp";
 import styles from "./User.module.scss";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+export const UserProfile = ({ name }: IUserProfile): JSX.Element => {
+    const [dropdown, setDropDown] = useState<boolean>(false);
+    const navigate = useNavigate();
+
+    return (
+        <div className={styles.user_profile_wrapper}>
+            <div className={styles.user_profile_container} onClick={() => setDropDown(!dropdown)}>
+                <img src={profileImg} alt="" />
+                <h4>{name}</h4>
+                <FontAwesomeIcon icon={faChevronDown} />
+            </div>
+
+            {dropdown && (
+                <div className={styles.user_profile_dropdown}>
+                    <div onClick={() => navigate("/mypage")}>마이페이지</div>
+                    <div onClick={() => {}}>로그아웃</div>
+                </div>
+            )}
+        </div>
+    );
+};
 
 export const UserCard = ({ name, social, review }: IUserCard): JSX.Element => {
     return (
