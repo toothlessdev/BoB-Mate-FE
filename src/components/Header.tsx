@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -6,10 +6,12 @@ import { faUtensils } from "@fortawesome/free-solid-svg-icons";
 
 import { Button } from "./interface/Button";
 import styles from "./Header.module.scss";
+import { useToken } from "../hooks/useAuth";
 
 export const Nav = (): JSX.Element => {
     const navigate = useNavigate();
 
+    const data = useToken();
     return (
         <nav className={styles.nav_wrapper}>
             <div className={styles.nav_container}>
