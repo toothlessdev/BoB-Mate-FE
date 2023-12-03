@@ -32,3 +32,7 @@ export interface IUserReviewCard {
     name: string;
     text: string;
 }
+
+export interface IUserProfile {
+    name: string;
+}
