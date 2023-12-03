@@ -11,7 +11,7 @@ import { useToken } from "../hooks/useAuth";
 export const Nav = (): JSX.Element => {
     const navigate = useNavigate();
 
-    const data = useToken();
+    // const data = useToken();
     return (
         <nav className={styles.nav_wrapper}>
             <div className={styles.nav_container}>
