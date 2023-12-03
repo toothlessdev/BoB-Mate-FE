@@ -23,7 +23,7 @@ export const authSlice = createSlice({
         setUser: (state, action: PayloadAction<IAuthState>) => {
             state = action.payload;
         },
-        setToken: (state, action: PayloadAction<string>) => {
+        setToken: (state, action: PayloadAction<string | null>) => {
             state.token = action.payload;
         },
         setUserImg: (state, action: PayloadAction<string>) => {
