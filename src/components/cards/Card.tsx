@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendar, faLocationDot, faUser, faUtensils } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 import styles from "./Card.module.scss";
 import { ICard, ICardContainer } from "./types";
@@ -9,9 +10,11 @@ export const Card = {
         return <div className={styles.card_container}>{children}</div>;
     },
 
-    Item: ({ title, type, date, restaurant, location, user, remains }: ICard): JSX.Element => {
+    Item: ({ uuid, title, type, date, restaurant, location, user, remains }: ICard): JSX.Element => {
+        const navigate = useNavigate();
+
         return (
-            <div className={styles.card}>
+            <div className={styles.card} onClick={() => navigate(`/reservation/${uuid}`)}>
                 <div className={styles.img_container}>
                     <img src="" alt="" />
                 </div>
