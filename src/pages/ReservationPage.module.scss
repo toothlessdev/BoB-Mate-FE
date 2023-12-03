@@ -1,0 +1,98 @@
+@import "@/styles/utils.scss";
+
+.header {
+    height: 400px;
+    .background_image {
+        background-image: url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+        width: 800px;
+        height: 300px;
+        margin: auto;
+        border-radius: $card-border;
+    }
+
+    .title_container {
+        background-color: white;
+        width: 600px;
+        height: 250px;
+        margin: auto;
+        position: relative;
+        top: -200px;
+
+        @include place-center;
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+
+        -webkit-box-shadow: 0px 4px 20px 0px rgba(171, 171, 171, 0.25);
+        -moz-box-shadow: 0px 4px 20px 0px rgba(171, 171, 171, 0.25);
+        box-shadow: 0px 4px 20px 0px rgba(171, 171, 171, 0.25);
+
+        .title {
+            span {
+                padding-left: 10px;
+                margin-right: 10px;
+                font-size: 32px;
+                font-weight: bold;
+            }
+
+            .icon {
+                font-size: 30px;
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+        }
+
+        .content {
+            .line {
+                font-size: 14px;
+
+                .icon {
+                    font-size: 20px;
+                    margin-left: 10px;
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+}
+
+.participant {
+    @include wrapper;
+    margin: 0px auto;
+
+    .title {
+        font-size: 18px;
+        font-weight: bold;
+
+        .icon {
+            font-size: 16px;
+            margin-right: 10px;
+        }
+    }
+
+    .item_container {
+        .item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-top: 12px;
+            padding-bottom: 2px;
+            border-bottom: 0.8px black solid;
+
+            font-size: 20px;
+            font-weight: 500;
+        }
+    }
+}
+
+.btn_container {
+    width: 90%;
+    max-width: 660px;
+
+    margin: 50px auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

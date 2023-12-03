@@ -7,7 +7,7 @@ import styles from "./ReservationListPage.module.scss";
 import { Modal } from "../components/interface/Modal";
 import { SearchResult } from "../components/SearchResult";
 
-export default function ReservationPage(): JSX.Element {
+export default function ReservationListPage(): JSX.Element {
     const [restaurantSearchModal, setRestaurantSearchModal] = useState<boolean>(false);
 
     const [startDate, setStartDate] = useState<IDate>({

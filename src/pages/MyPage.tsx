@@ -4,14 +4,12 @@ import styles from "./MyPage.module.scss";
 import { Card } from "../components/cards/Card";
 import { UnaryExpression } from "typescript";
 
-type TabMenu = 0 | 1 | 2;
-
 interface ITabBody {
-    tab: TabMenu;
+    tab: number;
 }
 
 export default function MyPage(): JSX.Element {
-    const [tab, setTab] = useState<TabMenu>(0);
+    const [tab, setTab] = useState<number>(0);
 
     return (
         <main>
@@ -23,12 +21,15 @@ export default function MyPage(): JSX.Element {
                 <div className={styles.tab_container}>
                     <div className={styles.tab_head}>
                         <div style={tab === 0 ? { color: "#1887fd", borderBottom: "3px solid #1887fd" } : {}} onClick={() => setTab(0)}>
-                            후기
+                            내가 받은 후기
                         </div>
                         <div style={tab === 1 ? { color: "#1887fd", borderBottom: "3px solid #1887fd" } : {}} onClick={() => setTab(1)}>
-                            참여중
+                            내가 쓴 후기
                         </div>
                         <div style={tab === 2 ? { color: "#1887fd", borderBottom: "3px solid #1887fd" } : {}} onClick={() => setTab(2)}>
+                            참여중
+                        </div>
+                        <div style={tab === 3 ? { color: "#1887fd", borderBottom: "3px solid #1887fd" } : {}} onClick={() => setTab(3)}>
                             참여완료
                         </div>
                     </div>
@@ -51,11 +52,18 @@ const TabBody = ({ tab }: ITabBody): JSX.Element | undefined => {
     if (tab === 1) {
         return (
             <div className={styles.tab_body}>
-                <Card.Item title="약속이름" type="점심약속" date="2023.12.02" restaurant="한식" location="경대맛집" user="방장" remains={2}></Card.Item>
+                <UserReviewCard name="홍길동" text="약속 시간을 잘 지켜요" />
             </div>
         );
     }
     if (tab === 2) {
+        return (
+            <div className={styles.tab_body}>
+                <Card.Item title="약속이름" type="점심약속" date="2023.12.02" restaurant="한식" location="경대맛집" user="방장" remains={2}></Card.Item>
+            </div>
+        );
+    }
+    if (tab === 3) {
         return (
             <div className={styles.tab_body}>
                 <Card.Item title="약속이름" type="점심약속" date="2023.12.02" restaurant="한식" location="경대맛집" user="" remains={2}></Card.Item>
