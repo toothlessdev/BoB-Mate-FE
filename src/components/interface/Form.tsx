@@ -25,8 +25,8 @@ export const Form = ({ children, width, height, ...rest }: IForm) => {
     );
 };
 
-export const Input = ({ width, height, ...rest }: IInput) => {
-    return <input style={{ width: width, height: height }} className={styles.input} {...rest}></input>;
+export const Input = ({ width, height, inputRef, ...rest }: IInput) => {
+    return <input ref={inputRef} style={{ width: width, height: height }} className={styles.input} {...rest}></input>;
 };
 
 export const InputContainer = ({ label, type, placeholder, btnRequired, btnLabel, onClick, ...rest }: IInputContainer) => {
