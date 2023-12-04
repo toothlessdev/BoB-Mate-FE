@@ -10,16 +10,15 @@ interface IReviewStar {
 export const ReviewStar = ({ score }: IReviewStar): JSX.Element => {
     return (
         <div className={styles.review_star_container}>
-            {Array(5 - score)
-                .fill(0)
-                .map(() => {
-                    return <img src={starStroke} alt="" />;
-                })}
-
             {Array(score)
                 .fill(0)
                 .map(() => {
                     return <img src={starFilled} alt="" />;
+                })}
+            {Array(5 - score)
+                .fill(0)
+                .map(() => {
+                    return <img src={starStroke} alt="" />;
                 })}
         </div>
     );
