@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import styles from "./Card.module.scss";
 import { ICard, ICardContainer } from "./types";
 
+import restaurantImg from "@/assets/restaurant.jpg";
+
 export const Card = {
     Container: ({ children }: ICardContainer) => {
         return <div className={styles.card_container}>{children}</div>;
@@ -16,7 +18,7 @@ export const Card = {
         return (
             <div className={styles.card} onClick={() => navigate(`/reservation/${uuid}`)}>
                 <div className={styles.img_container}>
-                    <img src="" alt="" />
+                    <img src={restaurantImg} alt="" />
                 </div>
 
                 <div className={styles.content_container}>

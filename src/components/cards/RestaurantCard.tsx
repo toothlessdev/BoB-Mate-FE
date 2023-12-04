@@ -4,6 +4,8 @@ import { ICardContainer, IRestaurantCard } from "./types";
 import { faList, faMapLocation } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 
+import restaurantImg from "@/assets/restaurant_img.jpg";
+
 export const RestaurantCard = {
     Container: ({ children }: ICardContainer) => {
         return <div className={styles.card_container}>{children}</div>;
@@ -19,7 +21,7 @@ export const RestaurantCard = {
         return (
             <div className={styles.card} onClick={handleClick}>
                 <div className={styles.img_container}>
-                    <img src="" alt="" />
+                    <img src={restaurantImg} alt="" />
                 </div>
 
                 <div className={styles.content_container}>
