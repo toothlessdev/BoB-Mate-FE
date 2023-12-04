@@ -20,6 +20,7 @@ export interface ISearchResultContainer {
 }
 
 export interface ISearchResult {
+    id: string;
     name: string;
     location: string;
     onClick: React.MouseEventHandler;

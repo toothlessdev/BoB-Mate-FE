@@ -10,7 +10,7 @@ export const Card = {
         return <div className={styles.card_container}>{children}</div>;
     },
 
-    Item: ({ uuid, title, type, date, restaurant, location, user, remains }: ICard): JSX.Element => {
+    Item: ({ uuid, title, type, date, restaurant, location, remains }: ICard): JSX.Element => {
         const navigate = useNavigate();
 
         return (
@@ -22,10 +22,6 @@ export const Card = {
                 <div className={styles.content_container}>
                     <div className={styles.card_head}>
                         <div>{type}</div>
-                        <div>
-                            <FontAwesomeIcon icon={faUser} />
-                            <span style={{ marginLeft: "5px" }}>{user}</span>
-                        </div>
                     </div>
 
                     <div className={styles.card_body}>
@@ -43,11 +39,13 @@ export const Card = {
                         </div>
                     </div>
 
-                    <h3>{title}</h3>
+                    <div className={styles.card_title}>
+                        <h3>{title}</h3>
+                    </div>
 
                     <div className={styles.card_footer}>
                         <h2>
-                            <span>{remains}명</span> 남음
+                            <span>{remains}명</span> 참여중
                         </h2>
                     </div>
                 </div>

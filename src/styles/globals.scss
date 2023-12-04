@@ -4,6 +4,8 @@
     border: 0;
 
     box-sizing: content-box;
+    text-overflow: ellipsis;
+    text-wrap: wrap;
 }
 
 a {

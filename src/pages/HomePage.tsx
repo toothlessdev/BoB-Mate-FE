@@ -1,13 +1,32 @@
 import { Card } from "../components/cards/Card";
 import { ICard } from "../components/cards/types";
+import { Loading } from "../components/interface/Loading";
+import { API_BASE_URL } from "../constants/api";
+import useFetch, { FetchStatus } from "../hooks/useFetch";
 import styles from "./HomePage.module.scss";
 
 export default function HomePage() {
+    const { status, data } = useFetch(API_BASE_URL + "/reservation");
+
+    if (status !== FetchStatus.SUCCESS) return <Loading />;
+    console.log(data);
+
     return (
         <main className={styles.main}>
             <Card.Container>
                 {data.map((element, index) => {
-                    return <Card.Item key={index} uuid={element.uuid} title={element.title} type={element.type} date={element.date} restaurant={element.restaurant} location={element.location} user={element.user} remains={element.remains}></Card.Item>;
+                    return (
+                        <Card.Item
+                            key={index}
+                            uuid={element.reservationId}
+                            title={element.description}
+                            type={element.finished ? "완료됌" : "진행중"}
+                            date={element.dateTime}
+                            restaurant={element.restaurantName}
+                            location={element.restaurantLocation}
+                            user={element.user}
+                            remains={element.participantCnt}></Card.Item>
+                    );
                 })}
             </Card.Container>
         </main>

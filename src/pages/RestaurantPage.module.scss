@@ -3,7 +3,7 @@
 .header {
     height: 400px;
     .background_image {
-        background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+        background-image: url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
         width: 800px;
         height: 300px;
         margin: auto;
@@ -18,13 +18,15 @@
         position: relative;
         top: -200px;
 
-        @include place-center;
+        display: flex;
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
 
-        -webkit-box-shadow: 0px 4px 20px 0px rgba(171,171,171,0.25);
-        -moz-box-shadow: 0px 4px 20px 0px rgba(171,171,171,0.25);
-        box-shadow: 0px 4px 20px 0px rgba(171,171,171,0.25);
+        -webkit-box-shadow: 0px 4px 20px 0px rgba(171, 171, 171, 0.25);
+        -moz-box-shadow: 0px 4px 20px 0px rgba(171, 171, 171, 0.25);
+        box-shadow: 0px 4px 20px 0px rgba(171, 171, 171, 0.25);
 
         .title {
             span {
@@ -35,7 +37,7 @@
             }
 
             .icon {
-                font-size:30px;
+                font-size: 30px;
                 margin-left: 10px;
                 margin-right: 10px;
             }
@@ -46,10 +48,19 @@
                 font-size: 14px;
 
                 .icon {
-                    font-size:20px;
+                    font-size: 20px;
                     margin-left: 10px;
                     margin-right: 10px;
                 }
+            }
+
+            .review {
+                margin: 20px 0px;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
             }
         }
     }
@@ -64,7 +75,7 @@
         font-weight: bold;
 
         .icon {
-            font-size:16px;
+            font-size: 16px;
             margin-right: 10px;
         }
     }
@@ -80,5 +91,4 @@
             padding-bottom: 2px;
         }
     }
-
 }
