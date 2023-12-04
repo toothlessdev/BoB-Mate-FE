@@ -3,9 +3,17 @@ import styles from "./RestaurantPage.module.scss";
 import { IRestaurantCard } from "../components/cards/types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faList, faMapLocationDot, faUtensils } from "@fortawesome/free-solid-svg-icons";
+import useFetch, { FetchStatus } from "../hooks/useFetch";
+import { API_BASE_URL } from "../constants/api";
+import { Loading } from "../components/interface/Loading";
+import { ReviewStar } from "../components/Review";
 
 export default function RestaurantPage(): JSX.Element {
     const { id } = useParams();
+
+    const { status, data } = useFetch(API_BASE_URL + `/restaurants/${id}`);
+
+    if (status !== FetchStatus.SUCCESS) return <Loading />;
 
     return (
         <main>
@@ -14,13 +22,20 @@ export default function RestaurantPage(): JSX.Element {
                 <div className={styles.title_container}>
                     <div className={styles.title}>
                         <FontAwesomeIcon icon={faUtensils} className={styles.icon} />
-                        <span>{data.title}</span>
+                        <span>{data.name}</span>
                         <FontAwesomeIcon icon={faUtensils} className={styles.icon} />
                     </div>
                     <div className={styles.content}>
                         <div className={styles.line}>
                             <FontAwesomeIcon icon={faMapLocationDot} className={styles.icon} />
-                            주소 {data.address}
+                            주소 {data.location}
+                        </div>
+
+                        <div className={styles.review}>
+                            <span>
+                                <ReviewStar score={data.score} />
+                            </span>
+                            {data.score}/5 ({data.scoreCnt} 개의 리뷰)
                         </div>
                     </div>
                 </div>
@@ -31,10 +46,10 @@ export default function RestaurantPage(): JSX.Element {
                     MENU
                 </div>
                 <div className={styles.item_container}>
-                    {data.menu.map((menuItem, index) => {
+                    {data.menus.map((menuItem, index) => {
                         return (
                             <div key={index} className={styles.item}>
-                                <p>{menuItem.menuTitle}</p>
+                                <p>{menuItem.name}</p>
                                 <p>{menuItem.price}₩</p>
                             </div>
                         );
@@ -44,23 +59,3 @@ export default function RestaurantPage(): JSX.Element {
         </main>
     );
 }
-
-const data: IRestaurantCard = {
-    id: 1,
-    title: "Allison Ltd",
-    address: "1959 Thompson ForksEast Jason, GA 49037",
-    menu: [
-        {
-            menuTitle: "Sloppy Joe Chicken Burger",
-            price: 4000,
-        },
-        {
-            menuTitle: "Grandmamas Signature Hot Chocolate",
-            price: 2800,
-        },
-        {
-            menuTitle: "Four Cheese Pizza",
-            price: 5600,
-        },
-    ],
-};

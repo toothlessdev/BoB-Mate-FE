@@ -26,6 +26,13 @@
     width: 220px;
     height: 220px;
 
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: inherit;
+    }
+
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
 
@@ -46,7 +53,7 @@
     flex-direction: column;
     justify-content: space-between;
 
-    .header{
+    .header {
         .title {
             font-size: 24px;
             font-weight: bold;

@@ -1,11 +1,10 @@
 export interface ICard {
     uuid: number;
     title: string;
-    type: "아침약속" | "점심약속" | "저녁약속";
+    type: string;
     date: string;
     restaurant: string;
     location: string;
-    user: string;
     remains: number;
 }
 

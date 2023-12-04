@@ -23,7 +23,14 @@ export const UserProfile = ({ name }: IUserProfile): JSX.Element => {
             {dropdown && (
                 <div className={styles.user_profile_dropdown}>
                     <div onClick={() => navigate("/mypage")}>마이페이지</div>
-                    <div onClick={() => {}}>로그아웃</div>
+                    <div
+                        onClick={() => {
+                            localStorage.removeItem("token");
+                            alert("로그아웃 되었습니다");
+                            navigate("/");
+                        }}>
+                        로그아웃
+                    </div>
                 </div>
             )}
         </div>

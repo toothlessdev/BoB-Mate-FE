@@ -18,9 +18,10 @@ export const SearchResult = {
             </div>
         );
     },
-    Item: ({ name, location, onClick }: ISearchResult): JSX.Element => {
+    Item: ({ id, name, location, onClick }: ISearchResult): JSX.Element => {
         return (
             <tr>
+                <td style={{ display: "none" }}>{id}</td>
                 <td>{name}</td>
                 <td>{location}</td>
                 <td onClick={onClick}>선택</td>
