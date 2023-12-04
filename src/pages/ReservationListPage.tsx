@@ -9,6 +9,7 @@ import { SearchResult } from "../components/SearchResult";
 import useFetch, { FetchStatus } from "../hooks/useFetch";
 import { API_BASE_URL } from "../constants/api";
 import { Loading } from "../components/interface/Loading";
+import { useNavigate } from "react-router-dom";
 
 export default function ReservationListPage(): JSX.Element {
     const [restaurantSearchModal, setRestaurantSearchModal] = useState<boolean>(false);
@@ -27,16 +28,21 @@ export default function ReservationListPage(): JSX.Element {
     const titleRef = useRef<HTMLInputElement>();
     const penaltyRef = useRef<HTMLInputElement>();
 
+    const navigate = useNavigate();
+
     const { status, data } = useFetch(API_BASE_URL + "/restaurants");
 
     const onSubmit = () => {
         const request = async () => {
             try {
-                const response = await fetch(API_BASE_URL + "/reservation/create", {
+                if (!localStorage.getItem("token")) {
+                    alert("로그인 해주세요");
+                    navigate("/auth/signin");
+                }
+                const response = await fetch(API_BASE_URL + `/reservation/create?token=${localStorage.getItem("token")}`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
-                        token: "testtoken",
                     },
                     body: JSON.stringify({
                         dateTime: `${date.year}-${date.month}-${date.date} ${date.hour}:${date.minute}:00`,
@@ -44,10 +50,12 @@ export default function ReservationListPage(): JSX.Element {
                         penaltyPrice: Number(penaltyRef.current.value),
                         restaurantId: Number(selectedRestaurant.id),
                     }),
-                    // credentials: "include",
-                    // mode: "no-cors",
                 });
                 if (!response.ok) throw new Error("/reservation/create API Call Failed");
+                else {
+                    alert("약속 생성이 생성되었습니다");
+                    navigate("/");
+                }
             } catch (err) {
                 alert("약속 생성에 실패하였습니다");
             }
