@@ -4,30 +4,46 @@ import { Loading } from "../components/interface/Loading";
 import { API_BASE_URL } from "../constants/api";
 import useFetch, { FetchStatus } from "../hooks/useFetch";
 import styles from "./HomePage.module.scss";
+import { InputContainer, Input } from "../components/interface/Form";
+import { useState } from "react";
 
 export default function HomePage() {
     const { status, data } = useFetch(API_BASE_URL + "/reservation");
+    const [search, setSearch] = useState<string>("");
 
     if (status !== FetchStatus.SUCCESS) return <Loading />;
-    console.log(data);
 
     return (
         <main className={styles.main}>
+            <div className={styles.search}>
+                <InputContainer
+                    onChange={(e) => {
+                        setSearch(e.target.value);
+                    }}
+                    type="text"
+                    label="검색어"
+                    placeholder="검색어를 입력해주세요"
+                    width="100%"></InputContainer>
+            </div>
             <Card.Container>
-                {data.map((element, index) => {
-                    return (
-                        <Card.Item
-                            key={index}
-                            uuid={element.reservationId}
-                            title={element.description}
-                            type={element.finished ? "완료됌" : "진행중"}
-                            date={element.dateTime}
-                            restaurant={element.restaurantName}
-                            location={element.restaurantLocation}
-                            user={element.user}
-                            remains={element.participantCnt}></Card.Item>
-                    );
-                })}
+                {data
+                    .filter((element) => {
+                        return element.description != null ? element.description.includes(search) : "";
+                    })
+                    .map((element, index) => {
+                        return (
+                            <Card.Item
+                                key={index}
+                                uuid={element.reservationId}
+                                title={element.description}
+                                type={element.finished ? "완료됌" : "진행중"}
+                                date={element.dateTime}
+                                restaurant={element.restaurantName}
+                                location={element.restaurantLocation}
+                                user={element.user}
+                                remains={element.participantCnt}></Card.Item>
+                        );
+                    })}
             </Card.Container>
         </main>
     );

@@ -48,72 +48,83 @@ export default function MyPage(): JSX.Element {
 }
 
 const TabBody = ({ tab, userReviewData, userParticipateData }: ITabBody): JSX.Element | undefined => {
-    if (tab === 0) {
-        return (
-            <div className={styles.tab_body}>
-                {userReviewData.map((element, index) => {
-                    return <UserReviewCard key={index} name={"-"} text={element.description} />;
-                })}
-            </div>
-        );
-    }
-    if (tab === 1) {
-        const restaurantsId = userParticipateData.map((el) => el.restaurantId);
-        const reservationId = userParticipateData.map((el) => el.reservationId);
+    const restaurantsId = userParticipateData && userParticipateData.map((el) => el.restaurantId);
+    const reservationId = userParticipateData && userParticipateData.map((el) => el.reservationId);
 
-        const [status, setStatus] = useState<FetchStatus>(FetchStatus.IDLE);
+    const [status, setStatus] = useState<FetchStatus>(FetchStatus.IDLE);
+    const [data, setData] = useState(userParticipateData);
 
-        console.log(reservationId, restaurantsId);
+    console.log(reservationId, restaurantsId);
+    const navigate = useNavigate();
 
-        useEffect(() => {
-            let restaurantInfo = [];
-            let reservationInfo = [];
-            userParticipateData.map((el) => {
-                fetch(API_BASE_URL + `/restaurants/${el.restaurantId}`)
-                    .then((res) => res.json())
-                    .then((data) => {
-                        restaurantInfo.push({
-                            restaurantName: data.name,
-                            restaurantLocation: data.location,
-                        });
-                    })
-                    .then(() => {
-                        fetch(API_BASE_URL + `/reservation/${el.reservationId}`)
-                            .then((res) => res.json())
-                            .then((data) => {
-                                reservationInfo.push({
-                                    participantCnt: data.users.length,
-                                });
-                            })
-                            .then(() => {
+    useEffect(() => {
+        let restaurantInfo = [];
+        let reservationInfo = [];
+        userParticipateData.map((el) => {
+            fetch(API_BASE_URL + `/restaurants/${el.restaurantId}`)
+                .then((res) => res.json())
+                .then((data) => {
+                    restaurantInfo.push({
+                        restaurantName: data.name,
+                        restaurantLocation: data.location,
+                    });
+                    console.log("fetch1");
+                })
+                .then(() => {
+                    fetch(API_BASE_URL + `/reservation/${el.reservationId}`)
+                        .then((res) => res.json())
+                        .then((data) => {
+                            reservationInfo.push({
+                                participantCnt: data.users.length,
+                            });
+                            console.log("fetch2");
+                        })
+                        .then(() => {
+                            setData(
                                 userParticipateData.map((el, index) => {
                                     userParticipateData[index].restaurantName = restaurantInfo[index].restaurantName;
                                     userParticipateData[index].restaurantLocation = restaurantInfo[index].restaurantLocation;
                                     userParticipateData[index].participantCnt = reservationInfo[index].participantCnt;
-                                });
-                                setStatus(FetchStatus.SUCCESS);
-                            });
-                    });
-            });
-        }, []);
+                                })
+                            );
+                            setStatus(FetchStatus.SUCCESS);
+                        });
+                })
+                .catch(() => {
+                    navigate("/auth/signin");
+                });
+        });
+    }, []);
 
-        if (status !== FetchStatus.SUCCESS) return <Loading />;
+    if (tab === 0) {
+        return (
+            <div className={styles.tab_body}>
+                {userReviewData &&
+                    userReviewData.map((element, index) => {
+                        return <UserReviewCard key={index} name={"-"} text={element.description} />;
+                    })}
+            </div>
+        );
+    }
+    if (tab === 1) {
+        if (status !== FetchStatus.SUCCESS) return;
 
         return (
             <div className={styles.tab_body}>
-                {userParticipateData.map((element, index) => {
-                    return (
-                        <Card.Item
-                            key={index}
-                            uuid={element.reservationId}
-                            title={element.description}
-                            type={element.finished ? "완료됌" : "진행중"}
-                            date={element.dateTime}
-                            restaurant={element.restaurantName}
-                            location={element.restaurantLocation}
-                            remains={element.participantCnt}></Card.Item>
-                    );
-                })}
+                {userReviewData &&
+                    userParticipateData.map((element, index) => {
+                        return (
+                            <Card.Item
+                                key={index}
+                                uuid={element.reservationId}
+                                title={element.description}
+                                type={element.finished ? "완료됌" : "진행중"}
+                                date={element.dateTime}
+                                restaurant={element.restaurantName}
+                                location={element.restaurantLocation}
+                                remains={element.participantCnt}></Card.Item>
+                        );
+                    })}
             </div>
         );
     }
