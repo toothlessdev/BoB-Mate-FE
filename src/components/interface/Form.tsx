@@ -29,11 +29,11 @@ export const Input = ({ width, height, inputRef, ...rest }: IInput) => {
     return <input ref={inputRef} style={{ width: width, height: height }} className={styles.input} {...rest}></input>;
 };
 
-export const InputContainer = ({ label, type, placeholder, btnRequired, btnLabel, onClick, inputRef, ...rest }: IInputContainer) => {
+export const InputContainer = ({ label, type, placeholder, btnRequired, btnLabel, onClick, onChange, inputRef, ...rest }: IInputContainer) => {
     return (
         <div className={styles.input_container}>
             <p>{label}</p>
-            <Input inputRef={inputRef} type={type} placeholder={placeholder} value={type === "button" ? placeholder : null} {...rest} />
+            <Input onChange={onChange} inputRef={inputRef} type={type} placeholder={placeholder} value={type === "button" ? placeholder : null} {...rest} />
             {btnRequired && (
                 <Button type="primary-stroke" onClick={onClick}>
                     {btnLabel}

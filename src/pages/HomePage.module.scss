@@ -1,3 +1,12 @@
+@import "@/styles/utils.scss";
+
 .main {
     width: 100%;
 }
+
+.search {
+    @include wrapper;
+    margin: 0px auto;
+}
+
+//
