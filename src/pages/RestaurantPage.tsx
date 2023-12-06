@@ -35,7 +35,7 @@ export default function RestaurantPage(): JSX.Element {
                             <span>
                                 <ReviewStar score={data.score} />
                             </span>
-                            {data.score}/5 ({data.scoreCnt} 개의 리뷰)
+                            {parseInt(data.score)}/5 ({data.scoreCnt} 개의 리뷰)
                         </div>
                     </div>
                 </div>

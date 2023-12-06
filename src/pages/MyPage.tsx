@@ -10,12 +10,16 @@ import { useNavigate } from "react-router-dom";
 
 interface ITabBody {
     tab: number;
+    userReviewData: any;
+    userParticipateData: any;
 }
 
 export default function MyPage(): JSX.Element {
     const [tab, setTab] = useState<number>(0);
 
     const { status, data } = useFetch(API_BASE_URL + `/account/profile?token=${localStorage.getItem("token")}`);
+    const { data: userReviewData } = useAuthenticatedFetch(API_BASE_URL + `/users/reviews`);
+    const { data: userParticipateData } = useAuthenticatedFetch(API_BASE_URL + `/reservation/my`);
 
     if (status !== FetchStatus.SUCCESS) return <Loading />;
 
@@ -38,30 +42,66 @@ export default function MyPage(): JSX.Element {
                 </div>
             </div>
 
-            <TabBody tab={tab}></TabBody>
+            <TabBody tab={tab} userReviewData={userReviewData} userParticipateData={userParticipateData} />
         </main>
     );
 }
 
-const TabBody = ({ tab }: ITabBody): JSX.Element | undefined => {
+const TabBody = ({ tab, userReviewData, userParticipateData }: ITabBody): JSX.Element | undefined => {
     if (tab === 0) {
-        const { status, data } = useAuthenticatedFetch(API_BASE_URL + `/users/reviews`);
-        if (status !== FetchStatus.SUCCESS) return <Loading />;
         return (
             <div className={styles.tab_body}>
-                {data.map((element, index) => {
-                    return <UserReviewCard name={" "} text={element.description} />;
+                {userReviewData.map((element, index) => {
+                    return <UserReviewCard key={index} name={"-"} text={element.description} />;
                 })}
             </div>
         );
     }
     if (tab === 1) {
-        const { status, data } = useAuthenticatedFetch(API_BASE_URL + `/reservation/my`);
+        const restaurantsId = userParticipateData.map((el) => el.restaurantId);
+        const reservationId = userParticipateData.map((el) => el.reservationId);
+
+        const [status, setStatus] = useState<FetchStatus>(FetchStatus.IDLE);
+
+        console.log(reservationId, restaurantsId);
+
+        useEffect(() => {
+            let restaurantInfo = [];
+            let reservationInfo = [];
+            userParticipateData.map((el) => {
+                fetch(API_BASE_URL + `/restaurants/${el.restaurantId}`)
+                    .then((res) => res.json())
+                    .then((data) => {
+                        restaurantInfo.push({
+                            restaurantName: data.name,
+                            restaurantLocation: data.location,
+                        });
+                    })
+                    .then(() => {
+                        fetch(API_BASE_URL + `/reservation/${el.reservationId}`)
+                            .then((res) => res.json())
+                            .then((data) => {
+                                reservationInfo.push({
+                                    participantCnt: data.users.length,
+                                });
+                            })
+                            .then(() => {
+                                userParticipateData.map((el, index) => {
+                                    userParticipateData[index].restaurantName = restaurantInfo[index].restaurantName;
+                                    userParticipateData[index].restaurantLocation = restaurantInfo[index].restaurantLocation;
+                                    userParticipateData[index].participantCnt = reservationInfo[index].participantCnt;
+                                });
+                                setStatus(FetchStatus.SUCCESS);
+                            });
+                    });
+            });
+        }, []);
 
         if (status !== FetchStatus.SUCCESS) return <Loading />;
+
         return (
             <div className={styles.tab_body}>
-                {data.map((element, index) => {
+                {userParticipateData.map((element, index) => {
                     return (
                         <Card.Item
                             key={index}
