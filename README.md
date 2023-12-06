@@ -62,6 +62,7 @@ npm run dev
 [http://localhost:5173](http://localhost:5173) 에 접속하여 확인
 
 # 5. 기술 스택
+<img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=Vite&logoColor=white">
 ![Vite]("https://img.shields.io/badge/Vite?style=for-the-badge&logo=vite&logoColor=white")
 ![TypeScript]("https://img.shields.io/badge/Vite?style=for-the-badge&logo=TypeScript&logoColor=white")
 ![React]("https://img.shields.io/badge/Vite?style=for-the-badge&logo=React&logoColor=white")
