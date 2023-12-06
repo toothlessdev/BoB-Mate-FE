@@ -53,18 +53,19 @@
 - 식당에 대한 리뷰 조회
 
 # 4. 실행 방법
-`
-git clone https://github.com/toothlessdev/BoB-Mate-FE.git
-cd BoB-Mate-FE
-npm install
-npm run dev
-`
+
+`git clone https://github.com/toothlessdev/BoB-Mate-FE.git`
+
+`cd BoB-Mate-FE`
+
+`npm install`
+
+`npm run dev`
+
 [http://localhost:5173](http://localhost:5173) 에 접속하여 확인
 
 # 5. 기술 스택
 <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=Vite&logoColor=white">
-![Vite]("https://img.shields.io/badge/Vite?style=for-the-badge&logo=vite&logoColor=white")
-![TypeScript]("https://img.shields.io/badge/Vite?style=for-the-badge&logo=TypeScript&logoColor=white")
-![React]("https://img.shields.io/badge/Vite?style=for-the-badge&logo=React&logoColor=white")
-![Redux]("https://img.shields.io/badge/Vite?style=for-the-badge&logo=Redux&logoColor=white")
-
+<img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white">
+<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white">
+<img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=Redux&logoColor=white">
